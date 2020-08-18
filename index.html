@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dvns.</title>
+
+    <link rel="shortcut icon" href="img/dvns.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900&display=swap&subset=cyrillic" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="logotype">
+            <img src="img/dvns-large.png" height="32px" alt="">
+        </div>
+        <div class="hashtags">
+            <div class="hashtags-hash" onclick="onlyThisTag(0)">HTML</div>
+            <div class="hashtags-hash" onclick="onlyThisTag(1)">CSS</div>
+            <div class="hashtags-hash" onclick="onlyThisTag(2)">JS</div>
+            <div class="hashtags-hash" onclick="onlyThisTag(3)">NodeJS</div>
+            <div class="hashtags-hash" onclick="onlyThisTag(4)">Игра</div>
+            <div class="hashtags-hash" onclick="onlyThisTag(5)">Сайт</div>
+            <div class="hashtags-hash" onclick="onlyThisTag(6)">Мобильное</div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="items" id="items"></div>
+    </div>
+
+    <script src="https://kit-pro.fontawesome.com/releases/v5.10.1/js/pro.min.js" data-auto-fetch-svg></script>
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/moment.min.js"></script>
+
+    <script src="js/index.js"></script>
+</body>
+</html>
