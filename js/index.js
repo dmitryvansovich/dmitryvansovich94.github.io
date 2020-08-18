@@ -21,7 +21,7 @@ const PROJECTS = [
         "tags": [0, 1, 2, 3, 4, 6],
         "time": "01.11.2019 - 15.11.2019"
     },{
-        "link": "https://shawn0592.github.io/",
+        "link": "",
         "cover": "websites/bagration.jpg",
         "header": "Операция «Багратион» - многопользовательская стратегия",
         "tags": [0, 1, 2, 3, 4],
@@ -32,6 +32,18 @@ const PROJECTS = [
         "header": "Arbour - сражения персонажами на арене",
         "tags": [0, 1, 2, 3, 4],
         "time": "14.01.2019 - 10.02.2018"
+    },{
+        "link": "http://postmylife.herokuapp.com/",
+        "cover": "websites/postmylife.jpg",
+        "header": "Социальная сеть postmylife",
+        "tags": [0, 1, 2, 3, 5],
+        "time": "Лето 2016 года"
+    },{
+        "link": "",
+        "cover": "websites/rohspecials.jpg",
+        "header": "Баг-трекер игрового проекта",
+        "tags": [0, 1, 2, 3, 5],
+        "time": "01.04.2020 - 07.05.2020"
     }
 ];
 
@@ -41,12 +53,22 @@ for(let i in PROJECTS){
     for(let t in PROJECTS[i].tags)
         tags += TAGS[PROJECTS[i].tags[t]];
     
+    let link = ``;
+    if(PROJECTS[i].link === "")
+        link = `
+        <div class="items-item-cover-link items-item-cover-nolink">
+            Ссылка недоступна
+        </div>`;
+    else
+        link = `
+        <div class="items-item-cover-link" data-tippy-content="Перейти" onclick="window.open('${PROJECTS[i].link}')">
+            <i class="far fa-link"></i>
+        </div>`;
+
     PROJECTS_html += `
         <div class="items-item">
             <div class="items-item-cover">
-                <div class="items-item-cover-link" data-tippy-content="Перейти" onclick="window.open('${PROJECTS[i].link}')">
-                    <i class="far fa-link"></i>
-                </div>
+                ${link}
                 <img src="${PROJECTS[i].cover}" alt="">
             </div>
             <div class="items-item-header">${PROJECTS[i].header}</div>
