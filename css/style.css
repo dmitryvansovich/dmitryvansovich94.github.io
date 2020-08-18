@@ -261,4 +261,7 @@ nav .hashtags .hashtags-hash:nth-of-type(4), .nodejs {
     nav {
         padding: 15px 2.5vw;
     }
+    .nav .hashtags {
+        overflow-x: auto;
+    }
 }
