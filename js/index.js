@@ -21,7 +21,7 @@ const PROJECTS = [
         "tags": [0, 1, 2, 3, 4, 6],
         "time": "01.11.2019 - 15.11.2019"
     },{
-        "link": "",
+        "link": "https://dmitryvansovich.github.io/",
         "cover": "websites/bagration.jpg",
         "header": "Операция «Багратион» - многопользовательская стратегия",
         "tags": [0, 1, 2, 3, 4],
