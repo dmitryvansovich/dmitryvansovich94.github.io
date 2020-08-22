@@ -44,6 +44,18 @@ const PROJECTS = [
         "header": "Баг-трекер игрового проекта",
         "tags": [0, 1, 2, 3, 5],
         "time": "01.04.2020 - 07.05.2020"
+    },{
+        "link": "https://dmitryvansovich.github.io/Komorka.github.io/",
+        "cover": "websites/komorka.jpg",
+        "header": "Сайт для майнкрафт сервера",
+        "tags": [0, 1, 2, 5],
+        "time": "30.01.2020 - 01.02.2020"
+    },{
+        "link": "",
+        "cover": "websites/videofortwo.jpg",
+        "header": "Синхронный просмотр видео с друзьями",
+        "tags": [0, 1, 2, 3, 5],
+        "time": "03.08.2020 - 14.08.2020"
     }
 ];
 
