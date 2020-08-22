@@ -27,17 +27,17 @@ const PROJECTS = [
         "tags": [0, 1, 2, 3, 4],
         "time": "07.11.2018 - 20.11.2018"
     },{
-        "link": "https://vk.com/app6601898_297747356",
-        "cover": "websites/arbour.jpg",
-        "header": "Arbour - сражения персонажами на арене",
-        "tags": [0, 1, 2, 3, 4],
-        "time": "14.01.2019 - 10.02.2018"
-    },{
         "link": "http://postmylife.herokuapp.com/",
         "cover": "websites/postmylife.jpg",
         "header": "Социальная сеть postmylife",
         "tags": [0, 1, 2, 3, 5],
         "time": "Лето 2016 года"
+    },{
+        "link": "https://vk.com/app6601898_297747356",
+        "cover": "websites/arbour.jpg",
+        "header": "Arbour - сражения персонажами на арене",
+        "tags": [0, 1, 2, 3, 4],
+        "time": "14.01.2019 - 10.02.2018"
     },{
         "link": "",
         "cover": "websites/rohspecials.jpg",
@@ -47,70 +47,70 @@ const PROJECTS = [
     }
 ];
 
-let PROJECTS_html = ``;
-for(let i in PROJECTS){
-    let tags = ``;
-    for(let t in PROJECTS[i].tags)
-        tags += TAGS[PROJECTS[i].tags[t]];
-    
-    let link = ``;
-    if(PROJECTS[i].link === "")
-        link = `
-        <div class="items-item-cover-link items-item-cover-nolink">
-            Ссылка недоступна
-        </div>`;
+function renderProjects(tagid){
+    window.scrollTo({
+        top: 0
+    });
+
+    let projects;
+    if(tagid)
+        projects = PROJECTS.filter(project => project.tags.includes(tagid));
     else
-        link = `
-        <div class="items-item-cover-link" data-tippy-content="Перейти" onclick="window.open('${PROJECTS[i].link}')">
-            <i class="far fa-link"></i>
-        </div>`;
+        projects = PROJECTS;
 
-    PROJECTS_html += `
-        <div class="items-item">
-            <div class="items-item-cover">
-                ${link}
-                <img src="${PROJECTS[i].cover}" alt="">
-            </div>
-            <div class="items-item-header">${PROJECTS[i].header}</div>
-            <div class="items-item-tags">
-                ${tags}
-            </div>
-            <div class="items-item-date"><i class="far fa-clock"></i> ${PROJECTS[i].time}</div>
-        </div>
-    `;
-}
-document.getElementById("items").innerHTML = PROJECTS_html;
-tippy('[data-tippy-content]', {
-    placement: 'right'
-});
+    let block1 = ``;
+    let block2 = ``;
+    let block3 = ``;
 
-function onlyThisTag(tagid){
-    let projects = PROJECTS.filter(project => project.tags.includes(tagid));
-
-    let projects_html = ``;
+    let blockNum = 1;
     for(let i in projects){
         let tags = ``;
         for(let t in projects[i].tags)
             tags += TAGS[projects[i].tags[t]];
         
-        projects_html += `
-            <div class="items-item">
-                <div class="items-item-cover">
-                    <div class="items-item-cover-link" data-tippy-content="Перейти" onclick="window.open('${projects[i].link}')">
-                        <i class="far fa-link"></i>
-                    </div>
-                    <img src="${projects[i].cover}" alt="">
+        let link = ``;
+        if(projects[i].link != "")
+            link = `<div class="item" data-tippy-content="Перейти" onclick="window.open('${projects[i].link}')"><i class="far fa-link"></i></div>`;
+
+        let html = `
+        <div class="items-item">
+            <div class="items-item-cover">
+                <div class="items-item-cover-link">
+                    <div class="item" data-tippy-content="Изображение" onclick="window.open('${projects[i].cover}')"><i class="far fa-image"></i></div>
+                    ${link}
                 </div>
-                <div class="items-item-header">${projects[i].header}</div>
-                <div class="items-item-tags">
-                    ${tags}
-                </div>
-                <div class="items-item-date"><i class="far fa-clock"></i> ${projects[i].time}</div>
+                <img src="${projects[i].cover}" alt="">
             </div>
-        `;
+            <div class="items-item-header">${projects[i].header}</div>
+            <div class="items-item-tags">
+                ${tags}
+            </div>
+            <div class="items-item-date"><i class="far fa-clock"></i> ${projects[i].time}</div>
+        </div>`;
+
+        if(blockNum === 1)
+            block1 += html;
+        else if(blockNum === 2)
+            block2 += html;
+        else if(blockNum === 3)
+            block3 += html;
+
+        blockNum++;
+        if(window.innerWidth <= 1300 && window.innerWidth >= 800)
+            if(blockNum > 2){ blockNum = 1; continue; }
+        if(blockNum > 3) blockNum = 1;
     }
-    document.getElementById("items").innerHTML = projects_html;
+    document.getElementById("items").innerHTML = `
+        <div class="block1">${block1}</div>
+        <div class="block2">${block2}</div>
+        <div class="block3">${block3}</div>
+    `;
     tippy('[data-tippy-content]', {
-        placement: 'right'
+        placement: 'top'
     });
 };
+renderProjects();
+
+window.onresize = function(){
+    renderProjects();
+}
