@@ -9,6 +9,12 @@ const TAGS = [
 ];
 const PROJECTS = [
     {
+        "link": "https://days.bntu.by",
+        "cover": "websites/daysbntuby.png",
+        "header": "Электронный журнал для университета",
+        "tags": [0, 1, 2, 3, 5],
+        "time": "29.09.2020 - сегодня"
+    },{
         "link": "http://onslices.herokuapp.com",
         "cover": "websites/onslices.jpg",
         "header": "onslices - школьный материал \"по кусочкам\"",
